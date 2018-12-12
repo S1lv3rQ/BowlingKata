@@ -8,6 +8,8 @@
 
 class Game {
     int score = 0;
+    int lastRollInFrame = 0;
+    int lastSpare = 0;
 public:
     void roll(int i);
     int scoreGame();

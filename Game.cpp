@@ -10,7 +10,18 @@
  */
 void Game::roll(int frame)
 {
-    score += frame;
+    if(lastRollInFrame == 0)
+        lastRollInFrame = frame;
+        score += frame;
+
+    if(lastRollInFrame != 0)
+    {
+        if(frame + lastRollInFrame == 10){ //logic pending
+            lastSpare = lastRollInFrame + frame;
+            score = lastSpare;
+        }
+        lastRollInFrame = 0;
+    }
 }
 
 /**
