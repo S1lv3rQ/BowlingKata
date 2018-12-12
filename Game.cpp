@@ -4,10 +4,20 @@
 
 #include "Game.h"
 
-void Game::roll(int frame) {
-
+/**
+ * Roll Pins
+ * @param frame - Number of pins
+ */
+void Game::roll(int frame)
+{
+    score += frame;
 }
 
-int Game::scoreGame() {
-    return 0;
+/**
+ * Returns final game score
+ * @return
+ */
+int Game::scoreGame()
+{
+    return score;
 }

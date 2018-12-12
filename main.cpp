@@ -13,7 +13,6 @@ TEST_CASE("Does the Game exist","[score]")
 
     //Assert
     REQUIRE(g != NULL);
-
 }
 
 TEST_CASE("Gutter Game Returns 0","[score]")
@@ -30,5 +29,20 @@ TEST_CASE("Gutter Game Returns 0","[score]")
 
     //Assert
     REQUIRE(0 == g.scoreGame());
+}
 
+TEST_CASE("Single Pin Game Returns 20","[score]")
+{
+    //Arrange
+    Game g;
+    int pins = 1;
+
+    //Act
+    for(int frame = 0; frame < 20; frame++)
+    {
+        g.roll(pins);
+    }
+
+    //Assert
+    REQUIRE(20 == g.scoreGame());
 }
