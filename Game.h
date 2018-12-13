@@ -4,15 +4,16 @@
 
 #ifndef BOWLINGKATA_GAME_H
 #define BOWLINGKATA_GAME_H
-
+#include <array>
 
 class Game {
     int score = 0;
-    int lastRollInFrame = 0;
-    int lastSpare = 0;
+    int currentRoll = 0;
+    std::array<int, 21> rolls;
 public:
-    void roll(int i);
+    void roll(int frame);
     int scoreGame();
+    bool isSpare(int frameIndex);
 };
 
 

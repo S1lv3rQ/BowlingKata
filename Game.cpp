@@ -10,18 +10,9 @@
  */
 void Game::roll(int frame)
 {
-    if(lastRollInFrame == 0)
-        lastRollInFrame = frame;
-        score += frame;
-
-    if(lastRollInFrame != 0)
-    {
-        if(frame + lastRollInFrame == 10){ //logic pending
-            lastSpare = lastRollInFrame + frame;
-            score = lastSpare;
-        }
-        lastRollInFrame = 0;
-    }
+    rolls[currentRoll] = frame;
+    currentRoll++;
+    //score += frame;
 }
 
 /**
@@ -30,5 +21,26 @@ void Game::roll(int frame)
  */
 int Game::scoreGame()
 {
+    int score = 0;
+    int rollNum = 0;
+    // 10 scores per game
+
+    for(int frame = 0; frame < 10; frame++)
+    {
+        if(isSpare(frame)) // spare
+        {
+            score += 10 + rolls[rollNum + 2];
+        } else{
+            score += rolls[rollNum] + rolls[rollNum + 1];
+        }
+        // Scoring by game
+
+        rollNum += 2;
+    }
     return score;
+}
+
+bool Game::isSpare(int frameIndex)
+{
+    return ( rolls[frameIndex] + rolls[frameIndex+1] == 10);
 }
